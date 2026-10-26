@@ -1,0 +1,103 @@
+{
+  "reviewer": "AI independent second pass",
+  "reviewed_date": "2026-10-26",
+  "reviewed_ids": [
+    "q019",
+    "q020",
+    "q021",
+    "q022",
+    "q024",
+    "q026",
+    "q027",
+    "q028",
+    "q030",
+    "q044",
+    "q047",
+    "q048",
+    "q052",
+    "q053",
+    "q063",
+    "q064",
+    "q065",
+    "q068",
+    "q070",
+    "q071",
+    "q072",
+    "q124",
+    "q260",
+    "q261",
+    "q377",
+    "q432"
+  ],
+  "motorcycle_critical_count": 20,
+  "review_method": "Compared every stem and every option for all 20 critical motorcycle items with the immutable Vietnamese and official key. Checked negation, exception scope, combination options, age/point qualifiers and legal vehicle categories. Read source PDF text for Q44/Q64/Q124/Q260/Q261/Q377/Q432 and visually inspected Q377/Q432 diagrams.",
+  "findings": [
+    {
+      "id": "q261",
+      "severity": "correction",
+      "issue": "Option 2 mistranslates bánh dẫn hướng as steering wheel. In this motorcycle context it is the steered/front wheel, not a steering wheel. The teaching explanation already correctly refers to front-wheel lock.",
+      "proposed_changes": {
+        "options_en": {
+          "q261_opt_2": "While moving, avoid using the front brake so as not to lock the front wheel."
+        }
+      }
+    },
+    {
+      "id": "q068",
+      "severity": "precision",
+      "issue": "quy chuẩn kỹ thuật quốc gia means national technical regulations. National technical standards is less precise in this mandatory legal requirement.",
+      "proposed_changes": {
+        "options_en": {
+          "q068_opt_1": "Wear a helmet that meets the national technical regulations and fasten the strap correctly."
+        }
+      }
+    },
+    {
+      "id": "q064",
+      "severity": "precision",
+      "issue": "The phrase người già yếu should be rendered frail elderly people rather than elderly or frail people, which broadens the category. Preserve the source list and its maximum-two and under-12 qualifiers.",
+      "proposed_changes": {
+        "options_en": {
+          "q064_opt_2": "Carrying a maximum of two passengers behind when transporting a sick person for emergency treatment, escorting a person who has violated the law, or carrying children under 12, frail elderly people or persons with disabilities."
+        }
+      }
+    },
+    {
+      "id": "q044",
+      "severity": "source_caution",
+      "issue": "Official PDF page 13 confirms broad motor-vehicle/special-purpose-vehicle wording and left-hand-lane key. Do not teach this as universal practical lane advice. The existing explanation contrasts Q43 but could state the source limitation more directly.",
+      "proposed_changes": {
+        "explanation_en": "The original book keys the left-hand lane for this exact item. Its wording is broad: do not treat it as a universal instruction to keep left on every marked road. In actual riding, follow the applicable lane signs and current road rules. The canonical Vietnamese and official answer are retained."
+      }
+    },
+    {
+      "id": "q124",
+      "severity": "source_caution",
+      "issue": "PDF page 29 says exactly 125 cm³ in Q124 option 1, unlike Q125 which says up to 125 cm³. Current translation and note preserve this accurately; no correction required.",
+      "proposed_changes": {}
+    },
+    {
+      "id": "q260",
+      "severity": "source_caution",
+      "issue": "PDF page 60 confirms keyed option 3 says increase throttle gradually and reduce it very quickly. Current translation and explanation retain the unusual adverb pairing accurately; do not silently change to gradually reduce.",
+      "proposed_changes": {}
+    },
+    {
+      "id": "q377",
+      "severity": "source_caution",
+      "issue": "PDF page 95 confirms right-angle wording in keyed option 1. Diagram is the supplied crossbuck arrangement. Current translation explicitly retains this source wording; do not infer an independently verified general limitation to right-angle crossings.",
+      "proposed_changes": {}
+    },
+    {
+      "id": "q432",
+      "severity": "source_caution",
+      "issue": "PDF page 113 confirms the exact stem and diagram, whose second sign visibly has left/right arrows, while the supplied audited key is Neither sign. The present translation/explanation already flags this source-specific tension and does not invent a general turning rule. Keep that caution visible after commitment.",
+      "proposed_changes": {}
+    }
+  ],
+  "limitations": [
+    "AI review, not an official English translation, human-certified translation or independent legal certification.",
+    "The reviewer authored the initial Q260/Q261 translations; those two received a self-review rather than a different-author review. The 20 critical translations and other additional source-caution items were authored by other agents.",
+    "Bundled official source is authoritative for exam scoring; review does not establish that every source statement is free of ambiguity or independently confirm later legal changes."
+  ]
+}

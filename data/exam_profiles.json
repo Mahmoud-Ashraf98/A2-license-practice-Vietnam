@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0.0",
+  "default_profile_id": "vn-A-2025-06",
+  "profiles": [
+    {
+      "id": "vn-A-2025-06",
+      "licence_category": "A",
+      "bank_id": "vn-motorcycle-250-2025-06-v1",
+      "valid_from": "2025-06-01",
+      "valid_through": "2027-02-28",
+      "time_zone": "Asia/Ho_Chi_Minh",
+      "question_count": 25,
+      "duration_seconds": 1140,
+      "minimum_correct": 23,
+      "critical_question_count": 1,
+      "critical_wrong_or_blank_fails": true,
+      "option_order": "original",
+      "question_order": "randomized",
+      "paper_pools": [
+        {
+          "chapter": 1,
+          "critical_for_motorcycle": false,
+          "count": 8
+        },
+        {
+          "chapter": 1,
+          "critical_for_motorcycle": true,
+          "count": 1
+        },
+        {
+          "chapter": 2,
+          "count": 1
+        },
+        {
+          "chapter": 3,
+          "count": 1
+        },
+        {
+          "chapter": 5,
+          "count": 8
+        },
+        {
+          "chapter": 6,
+          "count": 6
+        }
+      ],
+      "expired_behaviour": "Archived learning only; do not claim current-exam readiness until updated profile and bank are verified."
+    },
+    {
+      "id": "vn-A1-2025-06",
+      "licence_category": "A1",
+      "bank_id": "vn-motorcycle-250-2025-06-v1",
+      "valid_from": "2025-06-01",
+      "valid_through": "2027-02-28",
+      "time_zone": "Asia/Ho_Chi_Minh",
+      "question_count": 25,
+      "duration_seconds": 1140,
+      "minimum_correct": 21,
+      "critical_question_count": 1,
+      "critical_wrong_or_blank_fails": true,
+      "option_order": "original",
+      "question_order": "randomized",
+      "paper_pools": [
+        {
+          "chapter": 1,
+          "critical_for_motorcycle": false,
+          "count": 8
+        },
+        {
+          "chapter": 1,
+          "critical_for_motorcycle": true,
+          "count": 1
+        },
+        {
+          "chapter": 2,
+          "count": 1
+        },
+        {
+          "chapter": 3,
+          "count": 1
+        },
+        {
+          "chapter": 5,
+          "count": 8
+        },
+        {
+          "chapter": 6,
+          "count": 6
+        }
+      ],
+      "expired_behaviour": "Archived learning only; do not claim current-exam readiness until updated profile and bank are verified."
+    }
+  ],
+  "future_format_notice": {
+    "from": "2027-03-01",
+    "motorcycle_question_count": 40,
+    "duration_seconds": 1620,
+    "minimum_correct": 36,
+    "status": "Informational only; no future-format bank or generation profile supplied.",
+    "source_url": "https://xaydungchinhsach.chinhphu.vn/nhung-diem-moi-trong-sat-hach-lai-xe-119260703113320777.htm"
+  }
+}
