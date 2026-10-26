@@ -132,6 +132,17 @@ export function phraseSegments(text, phrases) {
   if (offset < text.length) segments.push({ text: text.slice(offset) });
   return segments.length ? segments : [{ text }];
 }
+export function usedStudyHelp(attempt) {
+  // English visible by default is assistance even without a reveal click.
+  return attempt?.level === 0 || (Array.isArray(attempt?.support) && attempt.support.length > 0);
+}
+export function learningOutcome(attempt) {
+  if (!attempt?.correct) return 'incorrect';
+  if (usedStudyHelp(attempt)) return 'assisted';
+  if (attempt.level < 3) return 'guided';
+  if (independent(attempt)) return 'independent';
+  return attempt.confidence === 'unrated' ? 'unrated' : 'uncertain';
+}
 export function independent(attempt) {
   return !!attempt?.correct && (attempt.level === 3 || attempt.level === 4) && (!attempt.support || (Array.isArray(attempt.support) && attempt.support.length === 0)) && attempt.confidence === 'sure';
 }
@@ -146,7 +157,8 @@ export function reviewState(attemptsForQuestion = []) {
       intervalDays = [1, 3, 7, 14, 30][Math.min(successes.size - 1, 4)];
     } else {
       intervalDays = 1;
-      if (a.confidence !== 'sure') unresolved = true;
+      // Skipping an optional rating is not an admission of uncertainty or an error.
+      if (a.confidence === 'unsure' || a.confidence === 'guessed') unresolved = true;
     }
     due = at + intervalDays * DAY; last = a;
   }
@@ -225,7 +237,7 @@ export function validateBackup(data, bankId, knownIds, questions, profiles = CUR
   checkUnique(data.attempts, 'attempt'); checkUnique(data.exams, 'exam'); checkUnique(data.phraseAttempts, 'phrase'); checkUnique(data.mistakeEdits, 'mistake');
   for (const a of data.attempts) {
     questionId(a.questionId); answerId(a.questionId, a.answerId);
-    if (typeof a.correct !== 'boolean' || !finiteTime(a.at) || (a.startedAt !== undefined && !finiteTime(a.startedAt)) || !Number.isInteger(a.level) || a.level < 0 || a.level > 4 || !['sure', 'unsure', 'guessed'].includes(a.confidence) || !Array.isArray(a.support) || a.support.length > 10000 || !Array.isArray(a.mistakes) || a.mistakes.some(m => !MISTAKE_IDS.includes(m))) throw new Error('Invalid attempt data');
+    if (typeof a.correct !== 'boolean' || !finiteTime(a.at) || (a.startedAt !== undefined && !finiteTime(a.startedAt)) || !Number.isInteger(a.level) || a.level < 0 || a.level > 4 || !['sure', 'unsure', 'guessed', 'unrated'].includes(a.confidence) || !Array.isArray(a.support) || a.support.length > 10000 || !Array.isArray(a.mistakes) || a.mistakes.some(m => !MISTAKE_IDS.includes(m))) throw new Error('Invalid attempt data');
     if (a.startedAt !== undefined && timestamp(a.startedAt) > timestamp(a.at)) throw new Error('Attempt was submitted before it started');
     if (byId && a.correct !== (a.answerId === byId.get(a.questionId).correct_option_id)) throw new Error('Attempt correctness differs from its answer');
   }

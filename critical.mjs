@@ -7,7 +7,7 @@ export function criticalProgress(questions, attempts, now = Date.now()) {
     const state = reviewState(history), latest = history.at(-1);
     const due = !!latest && state.due <= now;
     const status = !latest ? 'unseen' : state.mastered ? 'secure' : !independent(latest) || state.unresolved ? 'needsUnaided' : 'developing';
-    const priority = state.unresolved || latest && (!latest.correct || latest.confidence !== 'sure') ? 0 : !latest ? 1 : due ? 2 : status === 'needsUnaided' ? 3 : 4;
+    const priority = state.unresolved || latest && (!latest.correct || ['unsure','guessed'].includes(latest.confidence)) ? 0 : !latest ? 1 : due ? 2 : status === 'needsUnaided' ? 3 : 4;
     return { question, history, latest, state, due, status, priority };
   });
   const count = status => items.filter(item => item.status === status).length;
