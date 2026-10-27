@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "version": "36e432d7850fe9c5033e8a8b",
+  "version": "7bddd8d8e63f76ee5278d0cb",
   "files": [
     {
       "url": "app.mjs",
-      "sha256": "32d8fbe3180a3091f47311f62f1f7034f70b3c69e63a4ea60655da4ec1888a9b",
-      "bytes": 77279
+      "sha256": "a7fbcbbdfcfcdeb780c0e4e45b4c610583c83b603218ea39be08b8f8ff337c53",
+      "bytes": 129962
     },
     {
       "url": "assets/questions/q036.png",
@@ -649,8 +649,8 @@
     },
     {
       "url": "critical.mjs",
-      "sha256": "c690755bcdeb062a4e2ac37785bc066216302d8adfee252fcd1afd10fbd8964b",
-      "bytes": 2143
+      "sha256": "0ab0567b1e0062ffe83b2c615d1c63a547083b09f095e08ad0181753d6741ae9",
+      "bytes": 2895
     },
     {
       "url": "data/exam_profiles.json",
@@ -684,8 +684,8 @@
     },
     {
       "url": "engine.mjs",
-      "sha256": "4ca67a217bacb3701583911bf76da9101b30d22976ffc70f505259d7b2ae5e08",
-      "bytes": 21906
+      "sha256": "807bf310f88e03aa15a3eed7891c03a463843708a08fb051af02ffd6fd884e4c",
+      "bytes": 41300
     },
     {
       "url": "icon.svg",
@@ -719,9 +719,14 @@
     },
     {
       "url": "style.css",
-      "sha256": "8daca8ef570a945786fcc967154e936a140a5cd0b4368d875fc7823c576654fb",
-      "bytes": 29759
+      "sha256": "f4e682e9c04df484c2f249c8551f0754dc66d25a7ec189cfc00215afe2de3ec1",
+      "bytes": 31990
+    },
+    {
+      "url": "teaching.mjs",
+      "sha256": "c7f28dcc856aa7694e246c3946019e71d4921a378ff332658aa13333525eb78d",
+      "bytes": 2567
     }
   ],
-  "total_bytes": 20459153
+  "total_bytes": 20536780
 }

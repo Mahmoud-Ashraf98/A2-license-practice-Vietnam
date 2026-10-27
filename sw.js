@@ -1,5 +1,5 @@
 /* Atomic, resumable offline content. RELEASE is set by scripts/package-content.py. */
-const RELEASE = '36e432d7850fe9c5033e8a8b';
+const RELEASE = "7bddd8d8e63f76ee5278d0cb";
 const CACHE_PREFIX = 'viet-road-content-';
 const CACHE_NAME = CACHE_PREFIX + RELEASE;
 const absolute = path => new URL(path, self.registration.scope).href;
