@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "version": "7bddd8d8e63f76ee5278d0cb",
+  "version": "8a6358188e2493b05247fd96",
   "files": [
     {
       "url": "app.mjs",
-      "sha256": "a7fbcbbdfcfcdeb780c0e4e45b4c610583c83b603218ea39be08b8f8ff337c53",
-      "bytes": 129962
+      "sha256": "cd27216d918b489812acf361e040152ce1f7736b1c28229a943e001043bd7088",
+      "bytes": 130030
     },
     {
       "url": "assets/questions/q036.png",
@@ -719,8 +719,8 @@
     },
     {
       "url": "style.css",
-      "sha256": "f4e682e9c04df484c2f249c8551f0754dc66d25a7ec189cfc00215afe2de3ec1",
-      "bytes": 31990
+      "sha256": "e8d163329e606b7af939cf8d76e3f0ccfc67ab5e3237749ba00ebad2bf48a10a",
+      "bytes": 32003
     },
     {
       "url": "teaching.mjs",
@@ -728,5 +728,5 @@
       "bytes": 2567
     }
   ],
-  "total_bytes": 20536780
+  "total_bytes": 20536861
 }

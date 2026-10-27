@@ -39,6 +39,14 @@ Before relying on the app on your phone:
 1. Open it online, wait for Ready offline, close/reopen it, then repeat in airplane mode.
 2. Try a long option with large system text, both figures in question 362 and diagram zoom.
 3. Make a backup, import it in another browser, and check your session and paper history.
-4. For an app update, finish the paper, close all app windows/tabs, and reopen online so the waiting service worker can activate.
+4. For an app update, wait for the verified download and refresh online. An open paper must retain its selected answers and original deadline; no browser data needs to be cleared.
 
 Physical-device results should be added here only after someone performs them. Local browser results do not certify real-device behaviour or all translations.
+
+## Fixed-header follow-up
+
+The first scrolling-header check used a fresh browser context. A real upgrade from `d200cc6` to `621a6a3` reproduced a fixed 66-pixel header even after reload: the old offline worker kept serving its cached page while the replacement waited for every app window to close.
+
+`tests/header_update.py` covers upgrades from both releases, with either a saved study answer or an active timed paper. The replacement worker fully verifies its offline content before activation, leaves open documents running, and serves the replacement on a normal refresh. The test verifies that no automatic reload occurs, saved answers and paper deadlines survive, the question view has no branding element or reserved branding space, and offline reload uses the corrected layout. The normal date/settings row scrolls with the page; the bottom navigation remains accessible.
+
+Follow-up verification on 27 October 2026 passed all four upgrade combinations (both old releases, with study or a timed paper open), the complete fresh-browser flow, all 12 engine checks, and the 145-file offline check for release `8a6358188e2493b05247fd96`.

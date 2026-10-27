@@ -1,5 +1,5 @@
 /* Atomic, resumable offline content. RELEASE is set by scripts/package-content.py. */
-const RELEASE = "7bddd8d8e63f76ee5278d0cb";
+const RELEASE = "8a6358188e2493b05247fd96";
 const CACHE_PREFIX = 'viet-road-content-';
 const CACHE_NAME = CACHE_PREFIX + RELEASE;
 const absolute = path => new URL(path, self.registration.scope).href;
@@ -83,14 +83,16 @@ async function prepareContent() {
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     await prepareContent();
-    // Updates wait for old tabs to close. Never interrupt an active mock.
-    if (!self.registration.active) await self.skipWaiting();
+    // Activate only the fully verified release, even while an app window is open.
+    // Do not reload clients: an open paper keeps running, and its saved answers
+    // and deadline resume unchanged when the learner chooses to refresh.
+    await self.skipWaiting();
   })());
 });
 self.addEventListener('activate', event => {
   event.waitUntil((async () => {
     if (!(await isReady())) throw new Error('Partial offline content cannot activate.');
-    // Claiming is safe here: updates never skip an existing active worker.
+    // Existing documents keep their loaded code; the next refresh uses this release.
     await self.clients.claim();
     await announce({ type: 'OFFLINE_READY', version: RELEASE, ...latestProgress });
     // Retain the previous completed release as a recovery copy, plus unfinished
@@ -116,7 +118,7 @@ self.addEventListener('message', event => {
     event.waitUntil((async () => {
       try {
         await prepareContent();
-        if (!self.registration.active) await self.skipWaiting();
+        await self.skipWaiting();
       } catch (_) { /* OFFLINE_ERROR already announces the actionable failure. */ }
     })());
   }

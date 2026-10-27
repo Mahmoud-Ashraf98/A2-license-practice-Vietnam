@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "node --test tests/engine.test.mjs",
-    "test:browser": "python3 tests/browser_smoke.py",
-    "check": "node --check app.mjs && node --check engine.mjs && node --check teaching.mjs && python3 scripts/package-content.py --check",
+    "test:browser": "python3 tests/browser_smoke.py && python3 tests/header_update.py",
+    "check": "node --check app.mjs && node --check engine.mjs && node --check teaching.mjs && node --check sw.js && python3 scripts/package-content.py --check",
     "package:offline": "python3 scripts/package-content.py",
     "start": "python3 -m http.server 8000"
   }
