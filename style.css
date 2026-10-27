@@ -12,3 +12,129 @@ body[data-theme=dark]{color-scheme:dark;--paper:#17211e;--surface:#202d28;--surf
 @media(max-width:390px){.main{padding-left:15px;padding-right:15px}.brand{padding-left:16px}.hero{padding:25px 21px}.hero h1,.hero h2{font-size:29px}.hero p{font-size:13px;max-width:250px}.hero .actions .button{padding-left:12px;padding-right:12px;font-size:11px}.stat{padding:17px}.stat-number{font-size:27px}.card{padding:20px}.question-card,.exam-layout .question-card{padding:21px 16px}.question-text{font-size:19px}.option{font-size:18px;padding:13px 11px;gap:9px}.topic-card{padding:15px}.topic-card h3{font-size:14px}.plan-row{gap:10px}.plan-row .button{padding:8px 10px;font-size:11px}.plan-step{width:29px;height:31px}.bank-item{padding:14px}.reason-grid{grid-template-columns:1fr}.toolbar .field{min-width:125px}.question-top .tag{font-size:9px}.page-head h1{font-size:30px}.row{gap:8px}.timer{font-size:23px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 @media print{.sidebar,.topbar,.actions,.button,.exam-nav{display:none!important}.main{margin:0;width:100%;padding:0;max-width:none}body{background:white;color:black}.card,.question-card{box-shadow:none;border-color:#aaa;break-inside:avoid}.hero{background:white!important;color:black!important}.hero h1,.hero h2,.hero p{color:black!important}.figures img{max-height:250px}}
+
+/* The app title belongs to the page and scrolls away with the content. */
+.main > .brand {
+  position: static;
+  width: fit-content;
+  min-height: 44px;
+  margin: 0 0 24px;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+.main > .brand .brand-caption {
+  display: block;
+}
+.study-controls {
+  position: sticky;
+  bottom: 12px;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px;
+  margin-top: 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: 0 3px 20px #132d2715;
+}
+.study-controls > span {
+  font-size: 12px;
+  color: var(--muted);
+}
+.decode-tools {
+  margin: 12px 0 20px;
+}
+.reading-guide,
+.inline-gloss {
+  padding: 18px;
+  margin: 12px 0;
+  background: var(--soft-green);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.chunk-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.chunk-row > span:nth-child(2) {
+  flex: 1;
+  min-width: 140px;
+}
+.locate-chunk {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+.locate-chunk.found {
+  background: #d9bf70;
+  color: #172c24;
+}
+:focus-visible {
+  outline: 3px solid var(--forest);
+  outline-offset: 3px;
+}
+.option {
+  scroll-margin-block: 18px;
+}
+.modal-body dt {
+  font-weight: 650;
+  margin-top: 14px;
+}
+.modal-body dd {
+  margin: 2px 0 0;
+  color: var(--muted);
+}
+@media (max-width: 720px) {
+  .main {
+    padding-top: 22px;
+  }
+  .main > .brand {
+    margin-bottom: 16px;
+  }
+  .main > .brand .brand-caption {
+    display: none;
+  }
+  .study-controls {
+    bottom: calc(84px + env(safe-area-inset-bottom));
+    padding: 10px;
+  }
+  .study-controls .button {
+    flex: 1;
+    min-width: 130px;
+  }
+  .study-controls > span {
+    flex: 1;
+    min-width: 80px;
+  }
+  .question-top .row {
+    flex-wrap: wrap;
+  }
+  .chunk-row .button {
+    margin-left: auto;
+  }
+  .exam-nav .number {
+    min-width: 40px;
+    min-height: 44px;
+  }
+}
+@media print {
+  .main > .brand,
+  .study-controls,
+  .decode-tools {
+    display: none;
+  }
+}
