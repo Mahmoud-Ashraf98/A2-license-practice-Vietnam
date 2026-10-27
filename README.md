@@ -64,7 +64,7 @@ Older saved scores are preserved. Previously inferred exam confidence is retaine
 
 While connected, leave the app open until **Settings & backups → Offline practice** says **Ready offline**. It downloads and checks the app, questions, diagrams and source PDFs, about 21 MB. Open the app once in airplane mode before relying on it away from a connection.
 
-Updates wait for existing app tabs to close so they do not interrupt an active paper. After updating, close every tab or installed-app window and reopen while connected. A strict paper’s clock continues while the app is in the background or closed; reloading does not restart it.
+Updates download and verify in the background. Refresh while connected to load the new version; closing every app window or clearing browser data is unnecessary. Open pages are never automatically reloaded, and saved study sessions, paper answers and deadlines resume after a refresh. A strict paper’s clock continues while the app is in the background or closed; reloading does not restart it.
 
 Phrase audio is optional and depends on an installed Vietnamese browser voice. Slow and normal playback are available when supported. Reading practice works without audio; there is no guaranteed bundled audio fallback.
 
