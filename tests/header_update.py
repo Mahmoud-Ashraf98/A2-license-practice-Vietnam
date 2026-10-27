@@ -20,6 +20,15 @@ LEGACY_REFS = (
 
 
 class Handler(SimpleHTTPRequestHandler):
+    def do_GET(self):
+        # These fixtures replace files at one origin between deployments. Fetch
+        # the worker bytes every time instead of reusing filesystem-date 304s.
+        # The app's actual offline CacheStorage remains enabled throughout.
+        if self.path.split('?', 1)[0].endswith('/sw.js'):
+            if 'If-Modified-Since' in self.headers:
+                del self.headers['If-Modified-Since']
+        super().do_GET()
+
     def translate_path(self, path):
         self.directory = str(self.server.root)
         return super().translate_path(path)
@@ -150,22 +159,30 @@ def main():
                     page.evaluate("window.headerUpdateErrors=[];navigator.serviceWorker.addEventListener('message',e=>{if(e.data?.type==='OFFLINE_ERROR')window.headerUpdateErrors.push(e.data.message)})")
                     page.evaluate('''async version => {
                       const registration=await navigator.serviceWorker.getRegistration();
+                      const previousController=navigator.serviceWorker.controller;
                       await registration.update();
                       const deadline=Date.now()+45000;
-                      let lastResponse;
+                      let lastResponse, nextCheck=Date.now()+1000;
                       while(Date.now()<deadline) {
                         const worker=navigator.serviceWorker.controller;
-                        if(worker) {
+                        // Do not keep the retiring worker alive with status messages:
+                        // activation waits for its pending message events to finish.
+                        if(worker && worker!==previousController) {
                           const response=await new Promise(resolve=>{
                             const channel=new MessageChannel();
                             const timer=setTimeout(()=>resolve(null),1000);
-                            channel.port1.onmessage=e=>{clearTimeout(timer);resolve(e.data)};
+                            channel.port1.onmessage=e=>{clearTimeout(timer);channel.port1.close();resolve(e.data)};
                             worker.postMessage({type:'CHECK_STATUS'},[channel.port2]);
                           });
                           lastResponse=response;
                           if(response?.version===version && response.ready)return;
                         }
-                        await new Promise(resolve=>setTimeout(resolve,50));
+                        // A reload may have started a check against the previous
+                        // fixture; let that job finish, then request a fresh check.
+                        if(Date.now()>=nextCheck && !registration.installing) {
+                          await registration.update(); nextCheck=Date.now()+1000;
+                        }
+                        await new Promise(resolve=>setTimeout(resolve,250));
                       }
                       throw Error('Update did not take control: '+JSON.stringify({lastResponse,errors:window.headerUpdateErrors,installing:registration.installing?.state,waiting:registration.waiting?.state,active:registration.active?.state}));
                     }''', version)
