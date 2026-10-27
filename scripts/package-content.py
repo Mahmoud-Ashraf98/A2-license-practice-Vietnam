@@ -14,7 +14,9 @@ paths = [root / name for name in (
     'index.html', 'style.css', 'app.mjs', 'engine.mjs', 'storage.mjs',
     'critical.mjs', 'teaching.mjs', 'icon.svg', 'manifest.webmanifest',
 )]
-for folder, pattern in [('data', '*.json'), ('assets/questions', '*.png'), ('sources', '*.pdf')]:
+for folder, pattern in [('data', '*.json'), ('assets/questions', '*.png'),
+                        ('assets/icons', '*.png'), ('assets/icons', '*.ico'),
+                        ('sources', '*.pdf')]:
     paths.extend((root / folder).glob(pattern))
 files = []
 for path in sorted(paths):

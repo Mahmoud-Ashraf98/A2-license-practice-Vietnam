@@ -1,11 +1,61 @@
 {
   "schema_version": 1,
-  "version": "8a6358188e2493b05247fd96",
+  "version": "e43cebac3383012b2c8aee75",
   "files": [
     {
       "url": "app.mjs",
       "sha256": "cd27216d918b489812acf361e040152ce1f7736b1c28229a943e001043bd7088",
       "bytes": 130030
+    },
+    {
+      "url": "assets/icons/apple-touch-icon-v1.png",
+      "sha256": "40d65b7f9a0f929e88cf9177d00847a78b8a23070ae60b69ec52b9fe4ed2e5ed",
+      "bytes": 30630
+    },
+    {
+      "url": "assets/icons/duong-1024-v1.png",
+      "sha256": "c9e237ab3852d0bba68a604ba78b54cb5104fbbda9a58ebda985da26269098f8",
+      "bytes": 955152
+    },
+    {
+      "url": "assets/icons/duong-16-v1.png",
+      "sha256": "80a5b54bbf19b81b6e692f2c83c0476991990f3fcd1eaa82016d73480d75aea3",
+      "bytes": 1100
+    },
+    {
+      "url": "assets/icons/duong-192-v1.png",
+      "sha256": "557f2904c8cff250b1233c81593e111bd8301abbaf08517d2ec38619ce1a3605",
+      "bytes": 34238
+    },
+    {
+      "url": "assets/icons/duong-32-v1.png",
+      "sha256": "def5061382a8523c9c755d4d840db86067e728faecd1470b4774fa57ff1525b2",
+      "bytes": 2018
+    },
+    {
+      "url": "assets/icons/duong-48-v1.png",
+      "sha256": "33f57de533a8d39fe6e3655769bfefc4d29285d86769fbdcc745594a2813d92e",
+      "bytes": 3680
+    },
+    {
+      "url": "assets/icons/duong-512-v1.png",
+      "sha256": "33a6b8c8fa5ca8721fadcae5769edc98f22f018d50a7a9ae3d6e2a394a1da25c",
+      "bytes": 217551
+    },
+    {
+      "url": "assets/icons/duong-maskable-192-v1.png",
+      "sha256": "02d04d04f52390b4ae2609f3599668ea8e2ec4025b0345deb62aea5aae0eb4ed",
+      "bytes": 30918
+    },
+    {
+      "url": "assets/icons/duong-maskable-512-v1.png",
+      "sha256": "f910d27e68ba15085ce0c5ec8a865724ace83f08f67337fa207b249b4f0ea0e0",
+      "bytes": 198283
+    },
+    {
+      "url": "assets/icons/favicon-v1.ico",
+      "sha256": "ec9974d44cd8aac4062c82df4392504658b6d4b466b6c327196380baac1044e1",
+      "bytes": 15342
     },
     {
       "url": "assets/questions/q036.png",
@@ -694,13 +744,13 @@
     },
     {
       "url": "index.html",
-      "sha256": "08c58b98ef0723559707dfc36461736f33829612d80b2df974f57c92368d380b",
-      "bytes": 879
+      "sha256": "71907be02dcb863032c01e0773054b36c479a5cae427bffadfc0bc9f58fd5376",
+      "bytes": 1166
     },
     {
       "url": "manifest.webmanifest",
-      "sha256": "82298cf4e567473912c2bcfa2f70abd5790eb34d459a35047ad79dc81f464eab",
-      "bytes": 355
+      "sha256": "67f7900ea5f6a4fe62a06e458de3787fc469059df8e582100993cc38e48c0439",
+      "bytes": 683
     },
     {
       "url": "sources/official_600_questions.pdf",
@@ -728,5 +778,5 @@
       "bytes": 2567
     }
   ],
-  "total_bytes": 20536861
+  "total_bytes": 22026388
 }
