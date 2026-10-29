@@ -1,5 +1,5 @@
 /* Atomic, resumable offline content. RELEASE is set by scripts/package-content.py. */
-const RELEASE = "06ec2f33fb0c550734411aae";
+const RELEASE = "9b243fb5dc3487b979a5b6c2";
 const CACHE_PREFIX = 'viet-road-content-';
 const CACHE_NAME = CACHE_PREFIX + RELEASE;
 const absolute = path => new URL(path, self.registration.scope).href;
@@ -27,7 +27,11 @@ async function verifiedResponse(cache, file) {
     if (await digest(stored.clone()) === file.sha256) return;
     await cache.delete(url);
   }
-  const response = await fetch(url, { cache: 'no-store', credentials: 'same-origin' });
+  // A browser storage reset does not purge HTTP/CDN caches. Each expected set
+  // of bytes gets a fresh network URL, then is stored under its canonical key.
+  const downloadURL = new URL(url);
+  downloadURL.searchParams.set('sha256', file.sha256);
+  const response = await fetch(downloadURL, { cache: 'no-store', credentials: 'same-origin' });
   if (!response.ok || response.type === 'opaque') throw new Error(`Could not download ${file.url} (${response.status})`);
   if (await digest(response.clone()) !== file.sha256) throw new Error(`Content verification failed for ${file.url}`);
   await cache.put(url, response);
@@ -42,7 +46,9 @@ async function prepareContent() {
       await announce({ type: 'OFFLINE_READY', version: RELEASE, ...latestProgress });
       return true;
     }
-    const manifestResponse = await fetch(absolute('offline-manifest.json'), { cache: 'no-store', credentials: 'same-origin' });
+    const manifestURL = new URL(absolute('offline-manifest.json'));
+    manifestURL.searchParams.set('release', RELEASE);
+    const manifestResponse = await fetch(manifestURL, { cache: 'no-store', credentials: 'same-origin' });
     if (!manifestResponse.ok) throw new Error('The offline content list could not be downloaded.');
     const manifest = await manifestResponse.json();
     if (manifest.version !== RELEASE || !Array.isArray(manifest.files) || !manifest.files.length) throw new Error('The app and offline content versions do not match. Reload when your mock is finished.');
@@ -126,6 +132,14 @@ self.addEventListener('message', event => {
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
   event.respondWith((async () => {
+    // Load the latest shell online. Its fingerprinted modules/CSS cannot reuse
+    // an older release's HTTP cache; a verified shell remains the offline fallback.
+    if (event.request.mode === 'navigate') {
+      try {
+        const response = await fetch(event.request, { cache: 'no-store' });
+        if (response.ok) return response;
+      } catch (_) { /* Continue with the complete verified offline release. */ }
+    }
     if (await isReady()) {
       const cache = await caches.open(CACHE_NAME);
       const stored = await cache.match(event.request, { ignoreSearch: true });

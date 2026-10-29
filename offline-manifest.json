@@ -1,11 +1,41 @@
 {
   "schema_version": 1,
-  "version": "06ec2f33fb0c550734411aae",
+  "version": "9b243fb5dc3487b979a5b6c2",
   "files": [
     {
       "url": "app.mjs",
-      "sha256": "9486835e7ee63e0ae91c18467cab675c8c3a928e64a829e619c62e051d6948e6",
-      "bytes": 130604
+      "sha256": "7d7d0573342a84f85d65cd4e919471ba4461bffa8602dc6e6dcb8f5144c1dc2d",
+      "bytes": 130825
+    },
+    {
+      "url": "assets/app/app.c15f276b2f3a6b26.mjs",
+      "sha256": "c15f276b2f3a6b269f4c62f131275839bb6044a4c1fd0719cc1ba41afc76f8f6",
+      "bytes": 130893
+    },
+    {
+      "url": "assets/app/critical.62ae50e38df764a7.mjs",
+      "sha256": "62ae50e38df764a7651dc402f0619431d14e82c56740409903e1a20d18948588",
+      "bytes": 2912
+    },
+    {
+      "url": "assets/app/engine.068f3f542f385e50.mjs",
+      "sha256": "068f3f542f385e5080992fe24c1e93febed1eaff55ed040556b3ebbc806c74aa",
+      "bytes": 41310
+    },
+    {
+      "url": "assets/app/storage.aa34bfb69893be76.mjs",
+      "sha256": "aa34bfb69893be760c9c37b6b848c109247e7239996271537076295ee8581372",
+      "bytes": 1975
+    },
+    {
+      "url": "assets/app/style.967c28e853c10636.css",
+      "sha256": "967c28e853c10636d87e063df6055680f1444e4b32dc03aca26e5f6a0487dfb8",
+      "bytes": 33745
+    },
+    {
+      "url": "assets/app/teaching.c7f28dcc856aa769.mjs",
+      "sha256": "c7f28dcc856aa7694e246c3946019e71d4921a378ff332658aa13333525eb78d",
+      "bytes": 2567
     },
     {
       "url": "assets/icons/apple-touch-icon-v1.png",
@@ -744,8 +774,8 @@
     },
     {
       "url": "index.html",
-      "sha256": "b3841094adb1abdfb639a3063cb72ebbe2d68876e97ec29ceb1c4f030c68f7c3",
-      "bytes": 1665
+      "sha256": "fb464f2f15895b5385899a6f18e6f323e4738e037fc1ff1e2e91fa95a27ef2f0",
+      "bytes": 1721
     },
     {
       "url": "manifest.webmanifest",
@@ -778,5 +808,5 @@
       "bytes": 2567
     }
   ],
-  "total_bytes": 22029213
+  "total_bytes": 22242892
 }

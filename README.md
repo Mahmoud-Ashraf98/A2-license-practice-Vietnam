@@ -66,7 +66,7 @@ For a fully black interface, open **Settings & backups → Appearance**, choose 
 
 While connected, leave the app open until **Settings & backups → Offline practice** says **Ready offline**. It downloads and checks the app, questions, diagrams and source PDFs, about 21 MB. Open the app once in airplane mode before relying on it away from a connection.
 
-Updates download and verify in the background. Refresh while connected to load the new version; closing every app window or clearing browser data is unnecessary. Open pages are never automatically reloaded, and saved study sessions, paper answers and deadlines resume after a refresh. A strict paper’s clock continues while the app is in the background or closed; reloading does not restart it.
+An online refresh fetches the current app; versioned app files prevent an older browser cache from supplying the previous interface. Offline updates download and verify in the background. Closing every app window or clearing browser data is unnecessary. Open pages are never automatically reloaded, and saved study sessions, paper answers and deadlines resume after a refresh. A strict paper’s clock continues while the app is in the background or closed; reloading does not restart it.
 
 Phrase audio is optional and depends on an installed Vietnamese browser voice. Slow and normal playback are available when supported. Reading practice works without audio; there is no guaranteed bundled audio fallback.
 
@@ -94,7 +94,7 @@ Source-specific cautions remain visible, including questions 44, 124, 260, 377 a
 
 ## Run locally
 
-The app is plain HTML, CSS and JavaScript modules, with no production dependencies or build step. Use a recent Node.js version for tests and Python 3 for the local server and offline packaging:
+The app is plain HTML, CSS and JavaScript modules, with no production dependencies. Offline packaging generates fingerprinted browser assets from the root source files. Use a recent Node.js version for tests and Python 3 for the local server and offline packaging:
 
 ```bash
 git clone --branch gh-pages https://github.com/Mahmoud-Ashraf98/A2-license-practice-Vietnam.git
@@ -105,7 +105,7 @@ npm start
 
 ```bash
 npm test                 # focused learning, migration and paper-composition checks
-npm run package:offline  # regenerate checksums after changing shipped files
+npm run package:offline  # regenerate fingerprinted app files and offline checksums
 npm run check            # syntax and complete offline-manifest verification
 ```
 

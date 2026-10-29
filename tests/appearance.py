@@ -2,6 +2,7 @@
 from pathlib import Path
 import json
 import os
+import re
 import tempfile
 from playwright.sync_api import sync_playwright, expect
 from browser_smoke import click, nav, saved, selected, settled
@@ -57,7 +58,7 @@ def main():
         boot_context = browser.new_context(service_workers='block')
         boot_context.add_init_script('localStorage.setItem("duong-appearance", "amoled")')
         boot = boot_context.new_page()
-        boot.route('**/app.mjs', lambda route: route.fulfill(content_type='text/javascript', body=''))
+        boot.route(re.compile(r'/app(?:\.[0-9a-f]+)?\.mjs(?:\?.*)?$'), lambda route: route.fulfill(content_type='text/javascript', body=''))
         boot.goto(url)
         assert_logo(boot, '.boot .brand-icon')
         expect(boot.locator('html')).to_have_attribute('data-theme', 'amoled')

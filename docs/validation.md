@@ -56,3 +56,11 @@ Follow-up verification on 27 October 2026 passed all four upgrade combinations (
 The header and loading screen now use the same icon pack as the installed app. **Settings & backups → Appearance → AMOLED · Pure black** sets app surfaces to `#000000`, uses dark native controls and requests black browser chrome. Original source-image pixels remain unchanged. The appearance preference survives backups and offline use; a small local appearance cache also prevents a white loading flash.
 
 Verification on 29 October 2026 passed 13 engine checks, the existing learning-flow checks, all four cached-upgrade scenarios and `tests/appearance.py`. The appearance checks cover the loading screen, current logo, pure-black surfaces, light/dark OS settings, widths of 320/390/768/1280 CSS pixels, reload, backup export/import and offline practice. Browser checks used Chromium phone emulation; actual Android status/navigation-bar rendering remains browser-controlled.
+
+## Browser HTTP-cache follow-up
+
+The original logo/appearance fix reproduced a delivery failure even after deleting site data: with a ten-minute HTTP cache for modules and CSS, Chromium fetched the new HTML but reused the previous `app.mjs` and `style.css`. The old imported engine also rejected AMOLED backups. Clearing IndexedDB, CacheStorage and service-worker storage did not remove that HTTP cache.
+
+Packaging now generates content-hashed filenames for the full module graph and stylesheet. The offline worker downloads its manifest and checked files using release/checksum URLs, and online navigations fetch the current shell with the complete verified release retained for offline use. The app registers a worker URL tied to its module version; Settings shows that version for troubleshooting.
+
+`tests/cache_update.py` warms the old release's actual modules and stylesheet, clears site storage while retaining the browser HTTP cache, then checks the new logo, AMOLED styling and exported-backup import against the deployed file layout. The existing appearance and cached-worker upgrade tests also cover the generated layout.
