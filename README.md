@@ -58,6 +58,8 @@ Older saved scores are preserved. Previously inferred exam confidence is retaine
 
 ## Install and use offline
 
+For a fully black interface, open **Settings & backups → Appearance**, choose **AMOLED · Pure black**, and save preferences. The choice also applies to offline practice and is included in backups. System, Light and Dark appearances remain available.
+
 - **Android / Chrome:** open the app, then use the browser menu’s **Install app** or **Add to Home screen** option.
 - **iPhone / iPad / Safari:** use **Share → Add to Home Screen**.
 - You can also keep using it as a normal website.

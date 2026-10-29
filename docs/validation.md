@@ -50,3 +50,9 @@ The first scrolling-header check used a fresh browser context. A real upgrade fr
 `tests/header_update.py` covers upgrades from both releases, with either a saved study answer or an active timed paper. The replacement worker fully verifies its offline content before activation, leaves open documents running, and serves the replacement on a normal refresh. The test verifies that no automatic reload occurs, saved answers and paper deadlines survive, the question view has no branding element or reserved branding space, and offline reload uses the corrected layout. The normal date/settings row scrolls with the page; the bottom navigation remains accessible.
 
 Follow-up verification on 27 October 2026 passed all four upgrade combinations (both old releases, with study or a timed paper open), the complete fresh-browser flow, all 12 engine checks, and the 145-file offline check for release `8a6358188e2493b05247fd96`.
+
+## In-app logo and AMOLED appearance
+
+The header and loading screen now use the same icon pack as the installed app. **Settings & backups → Appearance → AMOLED · Pure black** sets app surfaces to `#000000`, uses dark native controls and requests black browser chrome. Original source-image pixels remain unchanged. The appearance preference survives backups and offline use; a small local appearance cache also prevents a white loading flash.
+
+Verification on 29 October 2026 passed 13 engine checks, the existing learning-flow checks, all four cached-upgrade scenarios and `tests/appearance.py`. The appearance checks cover the loading screen, current logo, pure-black surfaces, light/dark OS settings, widths of 320/390/768/1280 CSS pixels, reload, backup export/import and offline practice. Browser checks used Chromium phone emulation; actual Android status/navigation-bar rendering remains browser-controlled.

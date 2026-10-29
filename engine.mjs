@@ -906,7 +906,7 @@ export function validateBackup(
     throw new Error("Invalid saved daily target");
   if (
     preferences.theme !== undefined &&
-    !["system", "light", "dark"].includes(preferences.theme)
+    !["system", "light", "dark", "amoled"].includes(preferences.theme)
   )
     throw new Error("Invalid saved theme");
   if (

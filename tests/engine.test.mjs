@@ -320,6 +320,19 @@ test("phrase lapses reset spacing and same-day repetition cannot escalate interv
   assert.equal(new Set(queue).size, 8);
 });
 
+test("all appearance preferences survive backup validation and merging; unknown themes are rejected", () => {
+  for (const theme of ["system", "light", "dark", "amoled"]) {
+    const data = fresh();
+    data.preferences.theme = theme;
+    const restored = check(JSON.parse(JSON.stringify(data)));
+    assert.equal(restored.preferences.theme, theme);
+    assert.equal(check(mergeBackups(fresh(), restored)).preferences.theme, theme);
+  }
+  const broken = fresh();
+  broken.preferences.theme = "unknown";
+  assert.throws(() => check(broken), /theme/);
+});
+
 test("backup round-trip keeps exposures, personal spans and a resumable session; rejects corrupt extras", () => {
   const data = fresh(),
     q = questions[0];

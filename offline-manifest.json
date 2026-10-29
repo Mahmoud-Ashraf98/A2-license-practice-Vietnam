@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "version": "e43cebac3383012b2c8aee75",
+  "version": "06ec2f33fb0c550734411aae",
   "files": [
     {
       "url": "app.mjs",
-      "sha256": "cd27216d918b489812acf361e040152ce1f7736b1c28229a943e001043bd7088",
-      "bytes": 130030
+      "sha256": "9486835e7ee63e0ae91c18467cab675c8c3a928e64a829e619c62e051d6948e6",
+      "bytes": 130604
     },
     {
       "url": "assets/icons/apple-touch-icon-v1.png",
@@ -734,8 +734,8 @@
     },
     {
       "url": "engine.mjs",
-      "sha256": "807bf310f88e03aa15a3eed7891c03a463843708a08fb051af02ffd6fd884e4c",
-      "bytes": 41300
+      "sha256": "068f3f542f385e5080992fe24c1e93febed1eaff55ed040556b3ebbc806c74aa",
+      "bytes": 41310
     },
     {
       "url": "icon.svg",
@@ -744,8 +744,8 @@
     },
     {
       "url": "index.html",
-      "sha256": "71907be02dcb863032c01e0773054b36c479a5cae427bffadfc0bc9f58fd5376",
-      "bytes": 1166
+      "sha256": "b3841094adb1abdfb639a3063cb72ebbe2d68876e97ec29ceb1c4f030c68f7c3",
+      "bytes": 1665
     },
     {
       "url": "manifest.webmanifest",
@@ -769,8 +769,8 @@
     },
     {
       "url": "style.css",
-      "sha256": "e8d163329e606b7af939cf8d76e3f0ccfc67ab5e3237749ba00ebad2bf48a10a",
-      "bytes": 32003
+      "sha256": "967c28e853c10636d87e063df6055680f1444e4b32dc03aca26e5f6a0487dfb8",
+      "bytes": 33745
     },
     {
       "url": "teaching.mjs",
@@ -778,5 +778,5 @@
       "bytes": 2567
     }
   ],
-  "total_bytes": 22026388
+  "total_bytes": 22029213
 }
